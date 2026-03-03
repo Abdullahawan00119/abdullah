@@ -90,7 +90,7 @@ export default function AdminSkills() {
     }
   };
 
-  const categories = ["frontend", "backend", "tools", "other"];
+  const categories = ["frontend", "backend", "tools", "database", "other"];
 
   if (fetching) return (
     <div className="min-h-[400px] flex items-center justify-center">
