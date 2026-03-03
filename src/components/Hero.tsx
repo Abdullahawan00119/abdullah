@@ -83,9 +83,9 @@ export default function Hero({ meta }: { meta: any }) {
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[0.85] tracking-tighter uppercase">
             {meta?.name?.split(' ')[0] || 'Abdullah'} <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-emerald-400 to-violet-400 bg-[length:200%_auto] animate-gradient">
+            {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-emerald-400 to-violet-400 bg-[length:200%_auto] animate-gradient">
               {meta?.name?.split(' ')[1] || 'Portfolio'}
-            </span>
+            </span> */}
           </h1>
           
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10">
@@ -110,14 +110,14 @@ export default function Hero({ meta }: { meta: any }) {
               Start a Project
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a
+            {/* <a
               href={meta?.cv_url || "#"}
               onClick={handleDownloadCV}
               className="w-full sm:w-auto px-12 py-6 bg-white/5 hover:bg-white/10 text-white rounded-full font-black transition-all border border-white/10 flex items-center justify-center gap-3 uppercase tracking-widest text-[12px]"
             >
               <Download size={20} />
               Download CV
-            </a>
+            </a> */}
           </div>
           
           <div className="mt-12 flex items-center justify-center lg:justify-start gap-6 text-slate-500">
@@ -173,7 +173,7 @@ export default function Hero({ meta }: { meta: any }) {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute bottom-4 -right-4 z-20 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-white/10 shadow-2xl"
             >
-              <div className="text-2xl font-black text-emerald-400 mb-0.5 tracking-tighter">5+</div>
+              <div className="text-2xl font-black text-emerald-400 mb-0.5 tracking-tighter">1+</div>
               <div className="text-[8px] uppercase tracking-[0.2em] text-slate-500 font-black whitespace-nowrap">Years Exp.</div>
             </motion.div>
             
@@ -183,7 +183,7 @@ export default function Hero({ meta }: { meta: any }) {
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
               className="absolute top-4 -left-4 z-20 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-white/10 shadow-2xl"
             >
-              <div className="text-2xl font-black text-violet-400 mb-0.5 tracking-tighter">50+</div>
+              <div className="text-2xl font-black text-violet-400 mb-0.5 tracking-tighter">15+</div>
               <div className="text-[8px] uppercase tracking-[0.2em] text-slate-500 font-black whitespace-nowrap">Projects</div>
             </motion.div>
           </div>

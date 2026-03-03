@@ -37,9 +37,9 @@ export default function Navbar() {
               </Link>
             )
           ))}
-          <Link to="/admin" className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold hover:bg-white/10 transition-all">
+          {/* <Link to="/admin" className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold hover:bg-white/10 transition-all">
             Admin
-          </Link>
+          </Link> */}
         </div>
 
         <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>

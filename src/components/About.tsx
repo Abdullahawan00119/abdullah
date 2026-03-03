@@ -80,12 +80,12 @@ export default function About({ about }: { about: string }) {
             className="p-8 rounded-[2rem] bg-gradient-to-br from-violet-600/5 to-emerald-600/5 border border-white/5 flex flex-wrap items-center justify-center gap-8 md:gap-16"
           >
             <div className="text-center">
-              <div className="text-3xl font-black text-white">5+</div>
+              <div className="text-3xl font-black text-white">1+</div>
               <div className="text-[8px] uppercase tracking-widest text-slate-500 font-bold">Years Experience</div>
             </div>
             <div className="w-px h-10 bg-white/10 hidden sm:block"></div>
             <div className="text-center">
-              <div className="text-3xl font-black text-emerald-400">50+</div>
+              <div className="text-3xl font-black text-emerald-400">15+</div>
               <div className="text-[8px] uppercase tracking-widest text-slate-500 font-bold">Projects Done</div>
             </div>
             <div className="w-px h-10 bg-white/10 hidden sm:block"></div>

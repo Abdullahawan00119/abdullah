@@ -69,9 +69,9 @@ export default function ProjectDetails() {
               ))}
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase">
+            <h4 className="text-2xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase">
               {project.title}
-            </h1>
+            </h4>
             
             <p className="text-xl text-slate-400 leading-relaxed">
               {project.description}
@@ -103,12 +103,7 @@ export default function ProjectDetails() {
             </div>
 
             <div className="grid grid-cols-2 gap-6 pt-12 border-t border-white/5">
-              <div>
-                <div className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-2 flex items-center gap-2">
-                  <Calendar size={14} className="text-violet-500" /> Date
-                </div>
-                <div className="text-white font-medium">2024 - Present</div>
-              </div>
+           
               <div>
                 <div className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-2 flex items-center gap-2">
                   <Code size={14} className="text-emerald-500" /> Category

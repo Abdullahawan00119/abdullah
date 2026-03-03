@@ -61,7 +61,7 @@ export default function Contact({ meta }: { meta: any }) {
                 </div>
                 <div>
                   <div className="text-sm text-slate-500 uppercase tracking-wider font-semibold">Location</div>
-                  <div className="text-white text-lg">Pakistan</div>
+                  <div className="text-white text-lg">Quetta, Balochistan, Pakistan</div>
                 </div>
               </div>
             </div>
