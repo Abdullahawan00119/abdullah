@@ -10,40 +10,47 @@ export default function Hero({ meta }: { meta: any }) {
       return;
     }
 
-    const downloadUrl = meta.cv_url;
-    console.log("📥 Attempting to fetch CV URL:", downloadUrl);
+    const cvUrl = meta.cv_url;
+    console.log("📥 Attempting to download CV from:", cvUrl);
 
     try {
-      const response = await fetch(downloadUrl);
-      const contentType = response.headers.get('content-type');
-      console.log("📥 Fetch response status:", response.status, "content-type:", contentType);
-
-      if (!response.ok) {
-        const text = await response.text();
-        console.error("📥 Response body (error):", text.slice(0, 200));
-        throw new Error(`HTTP ${response.status} while fetching CV`);
+      // For PDF files stored in Cloudinary, we'll try multiple approaches
+      if (cvUrl.includes('cloudinary.com') && cvUrl.includes('.pdf')) {
+        // Method 1: Try with fl_attachment for raw files
+        if (cvUrl.includes('/raw/upload/')) {
+          const downloadUrl = cvUrl.replace('/raw/upload/', '/raw/upload/fl_attachment/');
+          console.log("📥 Method 1 - Trying raw download URL:", downloadUrl);
+          window.open(downloadUrl, '_blank');
+          return;
+        }
+        
+        // Method 2: Try with fl_attachment for image files (when PDF was uploaded as image)
+        if (cvUrl.includes('/image/upload/')) {
+          const downloadUrl = cvUrl.replace('/image/upload/', '/image/upload/fl_attachment/');
+          console.log("📥 Method 2 - Trying image download URL:", downloadUrl);
+          
+          // Open the download URL
+          window.open(downloadUrl, '_blank');
+          
+          // Also try opening the original URL in a new tab as fallback
+          setTimeout(() => {
+            console.log("📥 Opening original URL as fallback");
+            window.open(cvUrl, '_blank');
+          }, 1000);
+          return;
+        }
       }
 
-      if (!contentType || !contentType.includes('pdf')) {
-        const text = await response.text();
-        console.warn("📥 Response body (non-pdf):", text.slice(0, 300));
-        throw new Error("Fetched resource is not a PDF");
-      }
-
-      const blob = await response.blob();
-      console.log("📥 Blob type:", blob.type, blob.size);
-
-      const blobUrl = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = 'CV.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(blobUrl);
+      // For non-Cloudinary URLs or other cases, use direct open
+      console.log("📥 Using direct open method");
+      window.open(cvUrl, '_blank');
+      
+      console.log("✅ CV download initiated successfully");
     } catch (err: any) {
       console.error("❌ Download failed:", err);
-      alert(`Failed to load CV: ${err.message}. Check console for details.`);
+      // Final fallback: try opening directly
+      console.log("📥 Final fallback: direct open");
+      window.open(cvUrl, '_blank');
     }
   };
 
@@ -152,6 +159,10 @@ export default function Hero({ meta }: { meta: any }) {
                 alt={meta?.name}
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  console.warn('⚠️ Profile image failed to load, using fallback');
+                  e.currentTarget.src = `https://picsum.photos/seed/abdullah/800/800`;
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent opacity-80"></div>
             </div>

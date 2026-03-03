@@ -21,18 +21,33 @@ export default function AdminDashboard() {
     const fetchData = async () => {
       try {
         const data = await portfolioService.getPortfolioData();
-        const messages = await portfolioService.getMessages();
+        
+        let messages: any[] = [];
+        try {
+          messages = await portfolioService.getMessages();
+        } catch (msgErr) {
+          console.warn("Could not fetch messages:", msgErr);
+        }
         
         setStats({
-          visitors: data.visitorCount,
-          messages: messages.length,
-          skills: data.skills.length,
-          projects: data.projects.length,
-          testimonials: data.testimonials.length,
-          experiences: data.experiences.length
+          visitors: data.visitorCount || 0,
+          messages: messages?.length || 0,
+          skills: data.skills?.length || 0,
+          projects: data.projects?.length || 0,
+          testimonials: data.testimonials?.length || 0,
+          experiences: data.experiences?.length || 0
         });
-      } catch (err) {
+      } catch (err: any) {
         console.error("Dashboard fetch failed", err);
+        // Set default stats on error so the dashboard still loads
+        setStats({
+          visitors: 0,
+          messages: 0,
+          skills: 0,
+          projects: 0,
+          testimonials: 0,
+          experiences: 0
+        });
       }
     };
     fetchData();
