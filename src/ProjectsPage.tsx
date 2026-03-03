@@ -72,7 +72,7 @@ export default function ProjectsPage() {
               className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-violet-500 outline-none transition-all"
             />
           </div>
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
+          {/* <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
             <button
               onClick={() => setFilter("All")}
               className={`px-6 py-3 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${filter === "All" ? 'bg-violet-600 text-white' : 'bg-white/5 text-slate-400 hover:bg-white/10'}`}
@@ -88,7 +88,7 @@ export default function ProjectsPage() {
                 {tag}
               </button>
             ))}
-          </div>
+          </div> */}
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
