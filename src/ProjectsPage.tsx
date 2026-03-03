@@ -62,14 +62,15 @@ export default function ProjectsPage() {
         </div>
 
         <div className="flex flex-col md:flex-row gap-6 mb-12">
-          <div className="relative flex-1">
+          <div className="relative flex-1 ">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={20} />
             <input
+            
               type="text"
               placeholder="Search projects..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-violet-500 outline-none transition-all"
+              className="w-100 pl-12 pr-4 py-4 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-violet-500 outline-none transition-all"
             />
           </div>
           {/* <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
